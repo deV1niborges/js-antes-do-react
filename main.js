@@ -85,6 +85,122 @@ const key = "name";
 
 // Define o conteúdo de texto do corpo do documento HTML para o valor da propriedade correspondente à chave 'name' no objeto 'user'
 document.body.innerText = user[key];
-*/
+
 
 // Métodos de Array
+
+const array = [1, 2, 3, 4, 5];
+
+for (const i of array) {
+  document.body.innerText += i;
+} 
+
+const novoArray = [];
+
+array.forEach((item) => {
+  novoArray.push(item * 2);
+});
+
+document.body.innerText = JSON.stringify(novoArray);
+
+const novoArray = array.map((item) => {
+  if (item % 2 === 0) {
+    return item * 10;
+  }
+
+  return item;
+});
+
+document.body.innerText = JSON.stringify(novoArray);
+
+const novoArray = array
+.filter(item => item % 2 === 0)
+.map(item => item * 10)
+
+
+document.body.innerText = JSON.stringify(novoArray);
+
+const todosItensSaoNumeros = array.every((item) => {
+  return typeof item === "number";
+});
+
+document.body.innerText = JSON.stringify(todosItensSaoNumeros);
+
+const peloMenosUmItemNaoEUmNumero = array.some((item) => {
+  return typeof item != "number";
+});
+
+document.body.innerText = JSON.stringify(peloMenosUmItemNaoEUmNumero); 
+
+const par = array.find(item => item % 2 === 0)
+
+document.body.innerText = JSON.stringify(par);
+
+const par = array.findIndex(item => item % 2 === 0)
+
+document.body.innerText = JSON.stringify(par); 
+
+const soma = array.reduce((acc, item) => {
+  return acc + item
+}, 0);
+
+document.body.innerText = JSON.stringify(soma);
+
+
+// Template Literals
+
+const name = "";
+const message = `Bem-Vindo, ${name ? name : "Visitante"}`;
+
+document.body.innerText = message; 
+
+
+// Promises
+
+const somaDoisNumeros = (a, b) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(a + b);
+    }, 2000);
+  });
+};
+
+somaDoisNumeros(1, 4)
+  .then((soma) => {
+    document.body.innerText = soma;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+fetch("https://api.github.com/users/diego3g")
+  .then((response) => {
+    return response.json();
+  })
+  .then((body) => {
+    console.log(body);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    console.log("Deu");
+  });
+
+async function buscaDadosNoGithub() {
+  try {
+    const response = await fetch("https://api.github.com/users/diego3g");
+    const body = await response.json();
+
+    return body.name;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    console.log("Deu");
+  }
+}
+
+const name = buscaDadosNoGithub().then((name) => {
+  console.log(name);
+});
+*/
