@@ -86,23 +86,28 @@ const key = "name";
 // Define o conteúdo de texto do corpo do documento HTML para o valor da propriedade correspondente à chave 'name' no objeto 'user'
 document.body.innerText = user[key];
 
-
 // Métodos de Array
 
+// Cria um array com os números de 1 a 5
 const array = [1, 2, 3, 4, 5];
 
+// Itera sobre cada elemento do array e adiciona ao conteúdo do body do documento
 for (const i of array) {
   document.body.innerText += i;
 } 
 
+// Cria um novo array vazio
 const novoArray = [];
 
+// Itera sobre cada elemento do array, multiplica por 2 e adiciona ao novo array
 array.forEach((item) => {
   novoArray.push(item * 2);
 });
 
+// Define o conteúdo do body como o novo array convertido em string
 document.body.innerText = JSON.stringify(novoArray);
 
+// Cria um novo array com os elementos do array original, multiplicando por 10 se forem pares
 const novoArray = array.map((item) => {
   if (item % 2 === 0) {
     return item * 10;
@@ -111,52 +116,66 @@ const novoArray = array.map((item) => {
   return item;
 });
 
+// Define o conteúdo do body como o novo array convertido em string
 document.body.innerText = JSON.stringify(novoArray);
 
+// Cria um novo array contendo apenas os números pares do array original multiplicados por 10
 const novoArray = array
 .filter(item => item % 2 === 0)
 .map(item => item * 10)
 
-
+// Define o conteúdo do body como o novo array convertido em string
 document.body.innerText = JSON.stringify(novoArray);
 
+// Verifica se todos os itens do array são números
 const todosItensSaoNumeros = array.every((item) => {
   return typeof item === "number";
 });
 
+// Define o conteúdo do body como o resultado da verificação convertido em string
 document.body.innerText = JSON.stringify(todosItensSaoNumeros);
 
+// Verifica se pelo menos um item do array não é um número
 const peloMenosUmItemNaoEUmNumero = array.some((item) => {
   return typeof item != "number";
 });
 
+// Define o conteúdo do body como o resultado da verificação convertido em string
 document.body.innerText = JSON.stringify(peloMenosUmItemNaoEUmNumero); 
 
+// Encontra o primeiro número par no array
 const par = array.find(item => item % 2 === 0)
 
+// Define o conteúdo do body como o número par encontrado convertido em string
 document.body.innerText = JSON.stringify(par);
 
+// Encontra o índice do primeiro número par no array
 const par = array.findIndex(item => item % 2 === 0)
 
+// Define o conteúdo do body como o índice do número par encontrado convertido em string
 document.body.innerText = JSON.stringify(par); 
 
+// Soma todos os elementos do array
 const soma = array.reduce((acc, item) => {
   return acc + item
 }, 0);
 
+// Define o conteúdo do body como a soma dos elementos do array convertido em string
 document.body.innerText = JSON.stringify(soma);
-
 
 // Template Literals
 
+// Cria uma string vazia para o nome
 const name = "";
+// Cria uma mensagem de boas-vindas, usando "Visitante" se o nome estiver vazio
 const message = `Bem-Vindo, ${name ? name : "Visitante"}`;
 
+// Define o conteúdo do body como a mensagem de boas-vindas
 document.body.innerText = message; 
-
 
 // Promises
 
+// Função que soma dois números após 2 segundos, usando uma Promise
 const somaDoisNumeros = (a, b) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -165,6 +184,7 @@ const somaDoisNumeros = (a, b) => {
   });
 };
 
+// Chama a função de soma, e define o conteúdo do body como a soma resultante
 somaDoisNumeros(1, 4)
   .then((soma) => {
     document.body.innerText = soma;
@@ -173,6 +193,7 @@ somaDoisNumeros(1, 4)
     console.log(err);
   });
 
+// Faz uma requisição à API do GitHub para obter dados de um usuário
 fetch("https://api.github.com/users/diego3g")
   .then((response) => {
     return response.json();
@@ -187,6 +208,7 @@ fetch("https://api.github.com/users/diego3g")
     console.log("Deu");
   });
 
+// Função assíncrona que busca dados de um usuário no GitHub
 async function buscaDadosNoGithub() {
   try {
     const response = await fetch("https://api.github.com/users/diego3g");
@@ -200,6 +222,7 @@ async function buscaDadosNoGithub() {
   }
 }
 
+// Chama a função assíncrona e loga o nome do usuário no console
 const name = buscaDadosNoGithub().then((name) => {
   console.log(name);
 });
