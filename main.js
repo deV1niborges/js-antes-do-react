@@ -57,6 +57,34 @@ const user = {
 
 document.body.innerText = JSON.stringify(user);
 // Convertemos o objeto user em uma string JSON e a exibimos no corpo do documento
-*/
+
 
 // Optional Chaining
+
+// Definição do objeto 'user' que armazena informações sobre um usuário
+const user = {
+  name: "Vini", // Nome do usuário
+  nickname: "Gustavo", // Apelido do usuário
+  idade: 19, // Idade do usuário
+  address: { // Objeto aninhado 'address' que armazena informações sobre o endereço do usuário
+    street: "Rua Teste", // Nome da rua
+    number: 176, // Número do endereço
+    zip: { // Objeto aninhado 'zip' que armazena informações sobre o código postal
+      code: "39100000", // Código postal
+      city: "Minas Gerais", // Cidade
+    },
+    // Método 'showFullAdreess' que retorna uma mensagem
+    showFullAdreess() {
+      return "ok";
+    },
+  },
+};
+
+// Chave para acessar uma propriedade específica do objeto 'user'
+const key = "name";
+
+// Define o conteúdo de texto do corpo do documento HTML para o valor da propriedade correspondente à chave 'name' no objeto 'user'
+document.body.innerText = user[key];
+*/
+
+// Métodos de Array
